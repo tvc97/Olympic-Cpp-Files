@@ -1,3 +1,7 @@
+/*
+ * Trường hợp sai: a[i] > a[0..i-1] + t*2
+ */
+
 #include <iostream>
 #include <fstream>
 
