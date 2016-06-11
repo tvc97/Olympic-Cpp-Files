@@ -1,12 +1,15 @@
 #include <iostream>
 #include <fstream>
 
-#define maxn 100000
+#define maxn 200000
+
+typedef long long ll;
 
 using namespace std;
 
 struct queue {
-	int x[maxn], front, rear;
+	ll x[maxn];
+	int front, rear;
 
 	queue() { front = rear = -1; }
 	
@@ -14,16 +17,16 @@ struct queue {
 		return front == -1;
 	}
 
-	void push(int a) {
+	void push(ll a) {
 		if(front == -1) {
 			front = rear = 0;
 			x[front] = a;
 		} else x[++rear] = a;
 	}
 	
-	int pop() { return x[front++]; }
+	ll pop() { return x[front++]; }
 
-	int dem(int u, int v) {
+	int dem(ll u, ll v) {
 		int t = 0;
 		for(int i = front; i <= rear; i++)
 			if(x[i] >= u && x[i] <= v) t++;
@@ -31,7 +34,7 @@ struct queue {
 	}
 };
 
-void push(int x, queue &a, queue &b) {
+void push(ll x, queue &a, queue &b) {
 	a.push(x);
 	if(b.empty()) b.push(x);
 	else b.push(b.x[b.rear] ^ x);
@@ -45,7 +48,8 @@ void pop(queue &a, queue &b) {
 }
 
 int main() {
-	int n, m, t, u, v;
+	int n, m;
+	ll t, u, v;
 	string s;
 	queue a, b;
 	
